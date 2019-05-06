@@ -1,0 +1,107 @@
+int trigpin=24;
+int echopin=22;
+int a=28;
+int b=29;
+int c=34;
+int d=50;
+int e=40;
+int f=41;
+
+void setup() {
+Serial.begin(9600);
+
+pinMode(a,OUTPUT);
+pinMode(b,OUTPUT);
+pinMode(c,OUTPUT);
+pinMode(d,OUTPUT);
+pinMode(7,INPUT);
+pinMode(e,OUTPUT);
+pinMode(f,OUTPUT);
+
+    digitalWrite(a,HIGH);
+    digitalWrite(b,HIGH);
+    digitalWrite(c,HIGH);
+    digitalWrite(d,HIGH);
+      digitalWrite(e,HIGH);
+    digitalWrite(f,HIGH);
+
+}
+
+void loop() {
+ 
+  char c=Serial.read();
+
+  if(c=='0'  )
+  {
+    front();
+  }
+  else if(c=='1' )
+  {
+      back();
+  }
+  else if(c=='3' )
+  {
+    right();
+  }
+  else if(c=='2'  )
+  {
+    left();
+  }
+  else if (c=='4' )
+  {
+    stop();
+  }
+  else if (c=='5' )
+  {
+    digitalWrite(e,HIGH);  
+    digitalWrite(f,LOW);
+     digitalWrite(a,HIGH);
+    digitalWrite(b,HIGH);
+    digitalWrite(c,HIGH);
+    digitalWrite(d,HIGH);
+  }
+  else if (c=='6')
+  {
+    digitalWrite(e,LOW);  
+    digitalWrite(f,LOW); 
+  }
+ 
+ }
+  // put your main code here, to run repeatedly:
+
+  
+
+void back()
+{
+      digitalWrite(a,LOW);
+    digitalWrite(b,HIGH);
+    digitalWrite(c,HIGH);
+    digitalWrite(d,LOW);
+}
+void front(){
+    digitalWrite(a,HIGH);
+    digitalWrite(b,LOW);
+    digitalWrite(c,LOW);
+    digitalWrite(d,HIGH);
+}
+void right()
+{
+    digitalWrite(a,HIGH);
+    digitalWrite(b,HIGH);
+    digitalWrite(c,LOW);
+    digitalWrite(d,HIGH);
+}
+void left()
+{
+  digitalWrite(c,HIGH);
+    digitalWrite(d,HIGH);
+    digitalWrite(a,HIGH);
+    digitalWrite(b,LOW);
+}
+void stop()
+{
+digitalWrite(c,HIGH);
+    digitalWrite(d,HIGH);
+    digitalWrite(a,HIGH);
+    digitalWrite(b,HIGH);
+}
